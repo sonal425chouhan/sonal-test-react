@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { fetchStreams } from '../../actions';
 
 class StreamList extends React.Component {
@@ -25,12 +26,23 @@ class StreamList extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <h2>Streams</h2>
-        <div className="ui celled list">{this.renderList()}</div>
-      </div>
-    );
+    if (this.props.isSignedIn) {
+      return (
+        <div>
+          <h2>Streams</h2>
+          <div className="ui celled list">{this.renderList()}</div>
+        </div>
+
+      );
+    } else {
+      return (
+        <Redirect to={{
+              pathname: '/',
+              state: 'Please insert valid username'
+            }}  />
+      )
+    }
+
   }
 }
 

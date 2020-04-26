@@ -1,6 +1,6 @@
 import React from 'react';
-import flv from 'flv.js';
 import { connect } from 'react-redux';
+import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router-dom';
 import { fetchStream } from '../../actions';
 
@@ -11,8 +11,7 @@ class StreamShow extends React.Component {
     this.props.fetchStream(id);
   }
 
-  renderList() {
-
+  renderBackButton() {
       return (
         <div style={{ textAlign: 'right' }}>
           <Link to="/projects" className="ui button primary">
@@ -33,8 +32,8 @@ class StreamShow extends React.Component {
     return (
       <div>
         <h1>{name}</h1>
-        <h5>{readme}</h5>
-        {this.renderList()}
+        <ReactMarkdown source={readme} escapeHtml={false} />
+        {this.renderBackButton()}
       </div>
     );
   }

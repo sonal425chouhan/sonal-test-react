@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
-import Login from './streams/login';
+import Login from './streams/Login';
 import StreamList from './streams/StreamList';
 import StreamShow from './streams/StreamShow';
 import history from '../history';

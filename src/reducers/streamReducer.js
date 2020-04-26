@@ -1,10 +1,6 @@
-import _ from 'lodash';
 import {
   FETCH_STREAM,
   FETCH_STREAMS,
-  CREATE_STREAM,
-  EDIT_STREAM,
-  DELETE_STREAM
 } from '../actions/types';
 
 const initialState = {
@@ -17,12 +13,12 @@ const initialState = {
         {
           id: 1,
           name: 'React',
-          readme: 'My First React Project'
+          readme: 'This block of Markdown contains <a href="https://en.wikipedia.org/wiki/HTML">HTML</a>, and will require the <code>html-parser</code> AST plugin to be loaded, in addition to setting the <code class="prop">escapeHtml</code> property to false.'
         },
         {
           id: 2,
           name: 'React 2',
-          readme: 'My Second React Project'
+          readme: 'This block of Markdown contains <a href="https://en.wikipedia.org/wiki/HTML">HTML</a>, and will require the <code>html-parser</code> AST plugin to be loaded, in addition to setting the <code class="prop">escapeHtml</code> property to false.'
         }
       ]
     },
@@ -32,12 +28,12 @@ const initialState = {
         {
           id: 3,
           name: 'Angular',
-          readme: 'My First Angular Project'
+          readme: 'This block of Markdown contains <a href="https://en.wikipedia.org/wiki/HTML">HTML</a>, and will require the <code>html-parser</code> AST plugin to be loaded, in addition to setting the <code class="prop">escapeHtml</code> property to false.'
         },
         {
           id: 4,
           name: 'Angular 2',
-          readme: 'My Second Angular Project'
+          readme: 'This block of Markdown contains <a href="https://en.wikipedia.org/wiki/HTML">HTML</a>, and will require the <code>html-parser</code> AST plugin to be loaded, in addition to setting the <code class="prop">escapeHtml</code> property to false.'
         }
       ]
     },
@@ -47,12 +43,12 @@ const initialState = {
         {
           id: 5,
           name: 'Rails',
-          readme: 'My First Rails Project'
+          readme: 'This block of Markdown contains <a href="https://en.wikipedia.org/wiki/HTML">HTML</a>, and will require the <code>html-parser</code> AST plugin to be loaded, in addition to setting the <code class="prop">escapeHtml</code> property to false.'
         },
         {
           id: 6,
           name: 'Rails 2',
-          readme: 'My Second Rails Project'
+          readme: 'This block of Markdown contains <a href="https://en.wikipedia.org/wiki/HTML">HTML</a>, and will require the <code>html-parser</code> AST plugin to be loaded, in addition to setting the <code class="prop">escapeHtml</code> property to false.'
         }
       ]
     }
@@ -61,16 +57,20 @@ const initialState = {
 
 function setProjects(state, username = null) {
   const projects = getKeyByValue(state.projects, username)
-  state.user_projects = projects
-  return state;
+  return { ...state, user_projects: projects }
 }
 
 function getKeyByValue(object, username) {
   const ind = object.findIndex(p => p.user_id == username)
-  return object[ind].projects;
+  if(ind === -1){
+    return [];
+  } else {
+    return object[ind].projects;
+  }
 }
 
 function setProject(state, stream_id = null) {
+  debugger
   const project = state.user_projects.findIndex(p => p.id == stream_id)
   return { ...state, selected_project: state.user_projects[project] }
 }
