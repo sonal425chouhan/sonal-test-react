@@ -1,3 +1,5 @@
+The project contains a user login page, user project listing and project detail page. Please use user_1, user_2 or user_3 to login into the system. To run this project on codesandbox, import the https://github.com/sonal425chouhan/sonal-test-react into the codesandbox. 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
